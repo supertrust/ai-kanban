@@ -3,10 +3,11 @@ node_modules/
 out/
 *.js.map
 *.tsbuildinfo
+temp_auto_push.bat
 
 *.vsix
 
-.vscode-test/
 
 .DS_Store
-Thumbs.db
+Thumbs.db.gitignore
+temp_interactive_push.bat

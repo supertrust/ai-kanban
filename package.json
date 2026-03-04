@@ -97,6 +97,7 @@
     "url": "https://github.com/supertrust/ai-kanban"
   },
   "dependencies": {
-    "chokidar": "^3.6.0"
+    "chokidar": "^3.6.0",
+    "node-fetch": "^3.3.2"
   }
 }
