@@ -70,6 +70,8 @@ Click any card to open a modal with the full details:
 
 ## Development
 
+No packaged installer (`.vsix`) is currently available. To use the extension, run it in development mode as described below.
+
 ```bash
 npm install
 npm run watch
