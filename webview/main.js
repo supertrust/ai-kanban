@@ -1,4 +1,4 @@
-// Claude Kanban — Webview Main Script
+// AI Kanban — Webview Main Script
 // Communicates with VS Code Extension via vscode.postMessage / window.addEventListener
 
 (function () {
@@ -29,7 +29,7 @@
       <div id="loading" class="loading-screen">
         <div class="loading-logo">
           <div class="loading-orb"></div>
-          <span>Claude Kanban</span>
+          <span>AI Kanban</span>
         </div>
       </div>
       <div id="app-inner" class="hidden">
@@ -40,7 +40,7 @@
             <span class="history-toggle-label">Sessions</span>
             <span class="history-toggle-count" id="count-plan">0</span>
           </button>
-          <div class="header-logo">Claude Kanban</div>
+          <div class="header-logo">AI Kanban</div>
           <div class="header-spacer"></div>
         </header>
 

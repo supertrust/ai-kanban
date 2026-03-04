@@ -27,8 +27,8 @@ export class KanbanPanel {
     }
 
     const panel = vscode.window.createWebviewPanel(
-      "claudeKanban",
-      "Claude Kanban",
+      "aiKanban",
+      "AI Kanban",
       column ?? vscode.ViewColumn.One,
       {
         enableScripts: true,
@@ -189,14 +189,14 @@ export class KanbanPanel {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link href="${styleUri}" rel="stylesheet">
-  <title>Claude Kanban</title>
+  <title>AI Kanban</title>
 </head>
 <body>
   <div id="app">
     <div id="loading" class="loading-screen">
       <div class="loading-logo">
         <div class="loading-orb"></div>
-        <span>Claude Kanban</span>
+        <span>AI Kanban</span>
       </div>
     </div>
   </div>

@@ -79,7 +79,7 @@ export class FileWatcher extends EventEmitter {
         }
       })
       .on("error", (err: Error) => {
-        console.error("[Claude Kanban] FileWatcher error:", err);
+        console.error("[AI Kanban] FileWatcher error:", err);
       });
   }
 

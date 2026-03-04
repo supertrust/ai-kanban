@@ -80,7 +80,7 @@ class SessionItem extends vscode.TreeItem {
     );
 
     this.command = {
-      command: "claudeKanban.openBoard",
+      command: "aiKanban.openBoard",
       title: "Open Board",
       arguments: [session.id],
     };

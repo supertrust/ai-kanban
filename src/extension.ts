@@ -9,7 +9,7 @@ let fileWatcher: FileWatcher | undefined;
 let sidebarProvider: KanbanSidebarProvider | undefined;
 
 function getConfig() {
-  const cfg = vscode.workspace.getConfiguration("claudeKanban");
+  const cfg = vscode.workspace.getConfiguration("aiKanban");
   return {
     claudeDir: cfg.get<string>("claudeDir", "~/.claude"),
     liveThresholdMinutes: cfg.get<number>("liveThresholdMinutes", 10),
@@ -38,7 +38,7 @@ export function activate(context: vscode.ExtensionContext) {
   const detector = new SessionDetector(claudeDir, liveThresholdMinutes);
 
   sidebarProvider = new KanbanSidebarProvider();
-  vscode.window.registerTreeDataProvider("claudeKanban.sessions", sidebarProvider);
+  vscode.window.registerTreeDataProvider("aiKanban.sessions", sidebarProvider);
 
   let allProjects: ProjectGroup[] = [];
 
@@ -54,19 +54,19 @@ export function activate(context: vscode.ExtensionContext) {
     allProjects = detector.scanProjects();
     refresh();
   } catch (err) {
-    vscode.window.showErrorMessage(`Claude Kanban: Failed to load sessions — ${err}`);
+    vscode.window.showErrorMessage(`AI Kanban: Failed to load sessions — ${err}`);
   }
 
   context.subscriptions.push(
     vscode.workspace.onDidChangeConfiguration((e) => {
-      if (e.affectsConfiguration("claudeKanban")) {
+      if (e.affectsConfiguration("aiKanban")) {
         refresh();
       }
     }),
   );
 
   const openBoardCmd = vscode.commands.registerCommand(
-    "claudeKanban.openBoard",
+    "aiKanban.openBoard",
     (sessionId?: string) => {
       const filtered = applyFilter(allProjects);
       sidebarProvider?.setProjects(filtered);
@@ -79,14 +79,14 @@ export function activate(context: vscode.ExtensionContext) {
   );
 
   const refreshCmd = vscode.commands.registerCommand(
-    "claudeKanban.refresh",
+    "aiKanban.refresh",
     () => {
       try {
         allProjects = detector.scanProjects();
         refresh();
-        vscode.window.setStatusBarMessage("Claude Kanban: Refreshed", 2000);
+        vscode.window.setStatusBarMessage("AI Kanban: Refreshed", 2000);
       } catch (err) {
-        vscode.window.showErrorMessage(`Claude Kanban: Refresh failed — ${err}`);
+        vscode.window.showErrorMessage(`AI Kanban: Refresh failed — ${err}`);
       }
     },
   );
@@ -174,9 +174,9 @@ export function activate(context: vscode.ExtensionContext) {
   fileWatcher.start();
 
   const statusBar = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
-  statusBar.command = "claudeKanban.openBoard";
-  statusBar.text = "$(layout-panel) Claude Kanban";
-  statusBar.tooltip = "Open Claude Kanban Board";
+  statusBar.command = "aiKanban.openBoard";
+  statusBar.text = "$(layout-panel) AI Kanban";
+  statusBar.tooltip = "Open AI Kanban Board";
   statusBar.show();
 
   context.subscriptions.push(openBoardCmd, refreshCmd, statusBar);

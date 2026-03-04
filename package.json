@@ -1,6 +1,6 @@
 {
-  "name": "claude-kanban",
-  "displayName": "Claude Kanban",
+  "name": "ai-kanban",
+  "displayName": "AI Kanban",
   "description": "Visualize Claude Code sessions as a real-time Kanban board",
   "version": "0.1.0",
   "publisher": "must",
@@ -17,29 +17,29 @@
   "contributes": {
     "commands": [
       {
-        "command": "claudeKanban.openBoard",
-        "title": "Claude Kanban: Open Board",
+        "command": "aiKanban.openBoard",
+        "title": "AI Kanban: Open Board",
         "icon": "$(layout-panel)"
       },
       {
-        "command": "claudeKanban.refresh",
-        "title": "Claude Kanban: Refresh",
+        "command": "aiKanban.refresh",
+        "title": "AI Kanban: Refresh",
         "icon": "$(refresh)"
       }
     ],
     "viewsContainers": {
       "activitybar": [
         {
-          "id": "claudeKanban",
-          "title": "Claude Kanban",
+          "id": "aiKanban",
+          "title": "AI Kanban",
           "icon": "resources/activity-bar-icon.svg"
         }
       ]
     },
     "views": {
-      "claudeKanban": [
+      "aiKanban": [
         {
-          "id": "claudeKanban.sessions",
+          "id": "aiKanban.sessions",
           "name": "Sessions",
           "type": "tree"
         }
@@ -48,31 +48,31 @@
     "menus": {
       "view/title": [
         {
-          "command": "claudeKanban.openBoard",
-          "when": "view == claudeKanban.sessions",
+          "command": "aiKanban.openBoard",
+          "when": "view == aiKanban.sessions",
           "group": "navigation"
         },
         {
-          "command": "claudeKanban.refresh",
-          "when": "view == claudeKanban.sessions",
+          "command": "aiKanban.refresh",
+          "when": "view == aiKanban.sessions",
           "group": "navigation"
         }
       ]
     },
     "configuration": {
-      "title": "Claude Kanban",
+      "title": "AI Kanban",
       "properties": {
-        "claudeKanban.claudeDir": {
+        "aiKanban.claudeDir": {
           "type": "string",
           "default": "~/.claude",
           "description": "Path to Claude Code data directory"
         },
-        "claudeKanban.liveThresholdMinutes": {
+        "aiKanban.liveThresholdMinutes": {
           "type": "number",
           "default": 10,
           "description": "Minutes since last update to consider a session as LIVE"
         },
-        "claudeKanban.autoOpenOnLive": {
+        "aiKanban.autoOpenOnLive": {
           "type": "boolean",
           "default": false,
           "description": "Auto-open board when a LIVE session is detected"
@@ -91,6 +91,10 @@
     "@types/node": "^20.0.0",
     "@types/vscode": "^1.85.0",
     "typescript": "^5.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/supertrust/ai-kanban"
   },
   "dependencies": {
     "chokidar": "^3.6.0"
