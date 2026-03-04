@@ -1,0 +1,12 @@
+node_modules/
+
+out/
+*.js.map
+*.tsbuildinfo
+
+*.vsix
+
+.vscode-test/
+
+.DS_Store
+Thumbs.db

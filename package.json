@@ -1,0 +1,98 @@
+{
+  "name": "claude-kanban",
+  "displayName": "Claude Kanban",
+  "description": "Visualize Claude Code sessions as a real-time Kanban board",
+  "version": "0.1.0",
+  "publisher": "must",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "claudeKanban.openBoard",
+        "title": "Claude Kanban: Open Board",
+        "icon": "$(layout-panel)"
+      },
+      {
+        "command": "claudeKanban.refresh",
+        "title": "Claude Kanban: Refresh",
+        "icon": "$(refresh)"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "claudeKanban",
+          "title": "Claude Kanban",
+          "icon": "resources/activity-bar-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "claudeKanban": [
+        {
+          "id": "claudeKanban.sessions",
+          "name": "Sessions",
+          "type": "tree"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "claudeKanban.openBoard",
+          "when": "view == claudeKanban.sessions",
+          "group": "navigation"
+        },
+        {
+          "command": "claudeKanban.refresh",
+          "when": "view == claudeKanban.sessions",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Claude Kanban",
+      "properties": {
+        "claudeKanban.claudeDir": {
+          "type": "string",
+          "default": "~/.claude",
+          "description": "Path to Claude Code data directory"
+        },
+        "claudeKanban.liveThresholdMinutes": {
+          "type": "number",
+          "default": 10,
+          "description": "Minutes since last update to consider a session as LIVE"
+        },
+        "claudeKanban.autoOpenOnLive": {
+          "type": "boolean",
+          "default": false,
+          "description": "Auto-open board when a LIVE session is detected"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "chokidar": "^3.6.0"
+  }
+}
